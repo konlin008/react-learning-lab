@@ -9,3 +9,4 @@ To get started with any of the projects in this repository, follow these steps:
 1. **Clone the Repository**
 
    ```bash
+   https://github.com/konlin008/react-learning-lab.git
