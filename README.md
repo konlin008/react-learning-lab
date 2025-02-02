@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # React Learning Lab
 
 Welcome to the React Learning Lab! This repository is dedicated to experimenting with and learning React.js. Here, you'll find various projects, code snippets, and experiments as I delve into the world of React.
