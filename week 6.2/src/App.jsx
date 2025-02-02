@@ -15,17 +15,18 @@ const App = () => {
       <button onClick={() => handelClick(4)}>4</button>
       <button onClick={() => handelClick(5)}>5</button>
       <h1>id : {ids}</h1>
-      <Todo id={ids} />
+      {ids && <Todo id={ids} />}
     </>
   )
 }
 
 
 function Todo({ id }) {
-  const [todo, setTodo] = useState([])
+  const [todo, setTodo] = useState({})
 
   useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/todos/?id=${id}`)
+    if (!id) return;
+    axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`)
       .then((res) => {
         setTodo(res.data)
       })
