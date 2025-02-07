@@ -1,21 +1,31 @@
-import React, { useState, useMemo } from 'react';
-// You have been given a list of items you shopped from the grocery store
-// You need to calculate the total amount of money you spent
+import { useMemo, useState, } from 'react';
 
 export const Assignment3 = () => {
-    const [items, setItems] = useState([
+    const [items,] = useState([
         { name: 'Chocolates', value: 10 },
         { name: 'Chips', value: 20 },
         { name: 'Onion', value: 30 },
         { name: 'Tomato', value: 30 },
+        { name: 'Onion', value: 30 },
+        { name: 'Chocolates', value: 10 },
         // Add more items as needed
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    const totalValue = useMemo(() => {
+        var total = 0
+        items.forEach(item => {
+            total += item.value
+        });
+        return total
+    }, [items])
+
+    const [count, setCount] = useState(0)
+
     // Your code ends here
     return (
         <div>
+            <button onClick={()=> setCount(count+1)}>count {count}</button>
             <ul>
                 {items.map((item, index) => (
                     <li key={index}>{item.name} - Price: ${item.value}</li>
