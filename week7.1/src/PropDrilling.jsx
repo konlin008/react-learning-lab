@@ -1,25 +1,44 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { CountContext } from "./Context"
 
 const PropDrilling = () => {
-    const [count, SetCount] = useState(0)
+    const [count, setCount] = useState(0)
     return (
         <>
-            <Count count={count} />
-            <Buttons count={count} SetCount={SetCount} />
+            <CountContext.Provider value={{ count, setCount }}>
+                <Count />
+            </CountContext.Provider>
         </>
     )
 }
-function Count({ count }) {
+function Count() {
+    console.log("Count rerednder")
+    return (
+        <>
+
+            <CountRender />
+            <Buttons />
+        </>)
+}
+
+function CountRender() {
+    const { count } = useContext(CountContext)
     return (<>
-        <h3>Count is {count}</h3>
+        <h3>count {count}</h3>
     </>)
 }
-function Buttons({ count, SetCount }) {
+
+
+function Buttons() {
+    const { count, setCount } = useContext(CountContext)
     return (<>
         <button onClick={() => {
-            SetCount(count + 1)
+            setCount(count - 1)
+        }}>Decrease</button>
+        <button onClick={() => {
+            setCount(count + 1)
         }}>Increase</button>
-        <button onClick={() => { SetCount(count - 1) }}>Decrease</button>
+
     </>)
 }
 export default PropDrilling
